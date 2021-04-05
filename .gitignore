@@ -20,4 +20,10 @@ myvenv/
 .serverless
 
 # Secret Variables
-variables.yml
+.env
+
+#ide
+.idea/
+
+#cache
+*/__pycache__
