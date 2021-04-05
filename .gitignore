@@ -27,3 +27,6 @@ myvenv/
 
 #cache
 */__pycache__
+
+#modules
+node_modules/

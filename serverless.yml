@@ -10,8 +10,11 @@
 #    docs.serverless.com
 #
 # Happy Coding!
-custom: ${file(./variables.yml)}`
+org: batmanboxers
+app: dating-app
 service: dating-app
+useDotEnv: true
+
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -59,8 +62,12 @@ provider:
 
 functions:
   hello:
-    environment: ${self:custom}
     handler: handler.hello
+    events:
+      - http: ANY /
+      - http: ANY {proxy+}
+  migrate:
+    handler: migrate.handler
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -112,3 +119,7 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-python-requirements
